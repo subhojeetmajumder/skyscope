@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkyScope</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            🌤️ SkyScope
+        </div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Map</a>
+            <a href="#">About</a>
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+<p>Welcome to SkyScope!</p>
+
+            <p>
+                Search for any city and get real-time weather information.
+            </p>
+
+            <!-- Search -->
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Enter city name..."
+                >
+
+                <button id="searchBtn">
+                    Search
+                </button>
+
+            </div>
+
+            <button id="locationBtn" class="location-btn">
+                📍 Use My Location
+            </button>
+
+        </section>
+
+
+        <!-- Weather Section -->
+        <section class="weather-section">
+            <!-- 5 Day Forecast -->
+<!-- ===============================
+     SKYSCOPE INSIGHTS
+================================ -->
+
+<section class="insights-section">
+
+    <h2>🧠 SkyScope Insights</h2>
+
+    <div id="insightsContainer">
+
+        <p>
+            Search for a city to see weather insights.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- SKYSCOPE WEATHER SCORE -->
+
+<section class="score-section">
+
+    <h2>🌤️ SkyScope Weather Score</h2>
+
+    <div class="score-card">
+
+        <div class="score-circle">
+            <span id="weatherScore">--</span>
+            <small>/100</small>
+        </div>
+
+        <h3 id="scoreTitle">Awaiting Weather Data</h3>
+
+        <p id="scoreMessage">
+            Search for a city to calculate its outdoor comfort score.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SKYSCOPE SMART WEATHER ALERTS -->
+
+<section class="alerts-section">
+
+    <h2>🚨 SkyScope Smart Alerts</h2>
+
+    <p class="alerts-subtitle">
+        Get alerts about important weather conditions
+        in your selected city.
+    </p>
+
+    <div id="alertsContainer" class="alerts-container">
+
+        <p>
+            Search for a city to check its weather alerts.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- SKYSCOPE CITY COMPARISON -->
+
+<section class="comparison-section">
+
+    <h2>🌍 Compare Two Cities</h2>
+
+    <p class="comparison-subtitle">
+        Compare weather conditions and discover
+        which city offers better outdoor comfort.
+    </p>
+
+    <div class="comparison-search">
+
+        <input
+            type="text"
+            id="cityOneInput"
+            placeholder="Enter first city"
+        >
+
+        <input
+            type="text"
+            id="cityTwoInput"
+            placeholder="Enter second city"
+        >
+
+        <button id="compareBtn" type="button">
+            Compare Cities
+        </button>
+
+    </div>
+
+    <div
+        id="comparisonResult"
+        class="comparison-result"
+    >
+        <p>Enter two cities to compare their weather.</p>
+    </div>
+
+</section>
+
+<!-- SKYSCOPE FAVOURITE CITIES -->
+
+<section class="favourites-section">
+
+    <h2>⭐ Favourite Cities</h2>
+
+    <p class="favourites-subtitle">
+        Save your favourite locations for quick weather access.
+    </p>
+
+    <div class="favourites-add">
+        <input
+            type="text"
+            id="favouriteCityInput"
+            placeholder="Enter a city to save"
+        >
+
+        <button type="button" id="addFavouriteBtn">
+            + Add City
+        </button>
+    </div>
+
+    <div id="favouritesContainer" class="favourites-container">
+        <p>No favourite cities saved yet.</p>
+    </div>
+
+</section>
+
+<!-- ===============================
+     HOURLY FORECAST
+================================ -->
+
+<section class="hourly-section">
+
+    <h2>Hourly Forecast</h2>
+
+    <div
+        id="hourlyContainer"
+        class="hourly-container"
+    >
+        <p>Search for a city to see the hourly forecast.</p>
+    </div>
+
+</section>
+
+
+<!-- SKYSCOPE WEATHER TRENDS -->
+
+<section class="trends-section">
+    <h2>📈 Weather Trends</h2>
+
+    <p class="trends-subtitle">
+        Explore temperature and humidity changes
+        over the next 24 hours.
+    </p>
+
+    <div class="trend-chart">
+        <h3>🌡️ Temperature Trend (°C)</h3>
+        <canvas id="temperatureChart"></canvas>
+    </div>
+
+    <div class="trend-chart">
+        <h3>💧 Humidity Trend (%)</h3>
+        <canvas id="humidityChart"></canvas>
+    </div>
+</section>
+
+<!-- ===============================
+     5-DAY FORECAST
+================================ -->
+
+<section class="forecast-section">
+
+    <h2>5-Day Forecast</h2>
+
+    <div
+        id="forecastContainer"
+        class="forecast-container"
+    >
+        <p>Search for a city to see the forecast.</p>
+    </div>
+
+</section>
+
+            <div class="weather-card">
+
+                <h2 id="cityName">
+                    Search for a city
+                </h2>
+
+                <div class="weather-icon">
+    <img id="weatherIcon" src="" alt="Weather icon">
+</div>
+
+<div class="temperature">
+    <span id="temperature">--</span>°C
+</div>
+
+                <p id="weatherDescription">
+                    Weather information will appear here.
+                </p>
+
+                <div class="weather-details">
+
+    <div class="detail">
+        <span>💧</span>
+        <p>Humidity</p>
+        <strong id="humidity">--%</strong>
+    </div>
+
+    <div class="detail">
+        <span>💨</span>
+        <p>Wind</p>
+        <strong id="wind">-- m/s</strong>
+    </div>
+
+    <div class="detail">
+        <span>🌡️</span>
+        <p>Feels Like</p>
+        <strong id="feelsLike">--°C</strong>
+    </div>
+
+    <div class="detail">
+        <span>🔵</span>
+        <p>Pressure</p>
+        <strong id="pressure">-- hPa</strong>
+    </div>
+
+    <div class="detail">
+        <span>☁️</span>
+        <p>Clouds</p>
+        <strong id="clouds">--%</strong>
+    </div>
+
+</div>
+
+<div class="extra-weather-details">
+
+    <div class="extra-detail">
+        <span>🌡️</span>
+        <p>High</p>
+        <strong id="maxTemperature">--°C</strong>
+    </div>
+
+    <div class="extra-detail">
+        <span>🌡️</span>
+        <p>Low</p>
+        <strong id="minTemperature">--°C</strong>
+    </div>
+
+    <div class="extra-detail">
+        <span>👁️</span>
+        <p>Visibility</p>
+        <strong id="visibility">-- km</strong>
+    </div>
+
+    <div class="extra-detail">
+        <span>🧭</span>
+        <p>Wind Direction</p>
+        <strong id="windDirection">--</strong>
+    </div>
+
+</div>
+
+<div class="sun-details">
+
+    <div class="sun-detail">
+        <span>🌅</span>
+        <p>Sunrise</p>
+        <strong id="sunrise">--:--</strong>
+    </div>
+
+    <div class="sun-detail">
+        <span>🌇</span>
+        <p>Sunset</p>
+        <strong id="sunset">--:--</strong>
+    </div>
+
+</div>
+
+            </div>
+
+
+            <!-- Map -->
+            <div class="map-card">
+
+                <h2>📍 SkyScope</h2>
+
+                <div id="map"></div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 SkyScope | Real-time Weather Application
+        </p>
+
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/app.js"></script>
+
+<script
+    async
+    src="https://maps.googleapis.com/maps/api/js?key={{googleMapsApiKey}}&loading=async&libraries=maps,marker">
+</script>
+
+</body>
+
+</html>

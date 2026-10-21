@@ -285,7 +285,7 @@ function capitalize(text) {
 window.addEventListener("load", () => {
 
     if (window.google && google.maps) {
-        initMap();
+        // initMap(); // Temporarily disabled while Google Maps is unavailable
     }
 
 });
@@ -345,13 +345,22 @@ function getCurrentLocation() {
                 cityInput.value =
                     data.city;
 
+function updateMap(latitude, longitude, title) {
+  // Keep all your original function code here.
 
-                updateMap(
-                    data.latitude,
-                    data.longitude,
-                    `${data.city}, ${data.country}`
-                );
+  if (!window.google || !window.google.maps || !map) {
+    return;
+  }
 
+if (!window.google || !window.google.maps || !map) {
+  return;
+}
+  updateMap(
+    data.latitude,
+    data.longitude,
+    `${data.city}, ${data.country}`
+  );
+}
 
             } catch (error) {
 

@@ -1149,3 +1149,9 @@ footer {
         box-sizing: border-box;
     }
 }
+/* Temporarily disable Google Maps while cloud access is unavailable */
+#map,
+.map-section,
+#mapSection {
+  display: none !important;
+}

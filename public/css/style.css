@@ -2066,3 +2066,154 @@ main > .trends-section {
 main > .forecast-section {
   margin: 24px auto !important;
 }
+
+/* Fix Weather Trends chart overflow */
+
+.trends-section .trend-chart {
+  position: relative;
+  width: 100%;
+  height: 260px !important;
+  min-height: 0 !important;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.trends-section .trend-chart canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+}
+
+.trends-section .trend-chart:last-child {
+  margin-bottom: 0;
+}
+
+/* SkyScope Weather Trends - prevent chart clipping */
+
+.trends-section .trend-chart {
+  position: relative;
+  width: 100%;
+  height: 300px !important;
+  min-height: 0 !important;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.trends-section .trend-chart canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+}
+
+.trends-section .trend-chart:last-child {
+  margin-bottom: 0;
+}
+
+/* SkyScope chart layout fix */
+.trends-section .trend-chart {
+  position: relative;
+  width: 100%;
+  height: 340px !important;
+  min-height: 0 !important;
+  padding: 12px 16px 28px;
+  margin: 0 0 24px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.trends-section .trend-chart canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+}
+
+.trends-section .trend-chart:last-child {
+  margin-bottom: 0;
+}
+
+/* Specific fix for the humidity chart's clipped x-axis labels */
+.trends-section .trend-chart:has(#humidityChart) {
+  height: 380px !important;
+  padding-bottom: 48px !important;
+  overflow: visible !important;
+}
+
+.trends-section .trend-chart:has(#humidityChart) canvas {
+  height: 100% !important;
+}
+
+/* Keep Weather Trends axis labels inside their cards */
+.trends-section .trend-chart {
+  height: 360px !important;
+  padding-bottom: 20px !important;
+  overflow: hidden !important;
+}
+
+.trends-section .trend-chart canvas {
+  max-width: 100%;
+}
+
+/* Improve text contrast across SkyScope's dark dashboard */
+
+/* Section descriptions and subtitles */
+.comparison-subtitle,
+.favourites-subtitle,
+.hourly-section p,
+.trends-subtitle,
+.forecast-section p,
+.alerts-section p,
+.insights-section p,
+.weather-score-section p {
+  color: #cbd5e1 !important;
+}
+
+/* City comparison inputs and buttons */
+.comparison-section input,
+.favourites-section input {
+  color: #f1f5f9 !important;
+}
+
+.comparison-section input::placeholder,
+.favourites-section input::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1;
+}
+
+/* Main section text */
+.comparison-section,
+.favourites-section,
+.hourly-section,
+.trends-section,
+.forecast-section,
+.alerts-section,
+.insights-section,
+.weather-score-section {
+  color: #eef5ff;
+}
+
+/* Keep descriptions readable inside cards */
+.comparison-section p,
+.favourites-section p,
+.hourly-section p,
+.trends-section p,
+.forecast-section p,
+.alerts-section p,
+.insights-section p,
+.weather-score-section p {
+  color: #cbd5e1 !important;
+}
+
+/* Make Weather Score description readable */
+#scoreMessage,
+.weather-score-section #scoreMessage,
+#weatherScore p {
+  color: #eef5ff !important;
+  opacity: 1 !important;
+}

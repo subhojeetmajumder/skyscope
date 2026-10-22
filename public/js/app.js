@@ -1528,7 +1528,11 @@ function displayWeatherTrends(forecastData) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-
+layout: {
+  padding: {
+    bottom: 28
+  }
+},
             plugins: {
                 legend: {
                     display: true
@@ -1576,7 +1580,15 @@ function displayWeatherTrends(forecastData) {
             responsive: true,
             maintainAspectRatio: false,
 
-            plugins: {
+scales: {
+    x: {
+      ticks: {
+        maxRotation: 45,
+        minRotation: 45,
+        autoSkip: true,
+        padding: 8
+      }
+    },
                 legend: {
                     display: true
                 }

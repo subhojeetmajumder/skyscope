@@ -124,18 +124,31 @@ body {
 
 /* Weather Section */
 
+
 .weather-section {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 30px;
-
-    width: 90%;
-    max-width: 1200px;
-
-    margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  width: min(1200px, calc(100% - 48px));
+  max-width: 1200px;
+  margin: 30px auto;
+  box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+  .weather-section {
+    grid-template-columns: minmax(0, 1fr);
+    width: calc(100% - 24px);
+    gap: 20px;
+  }
+}
+
+.weather-section > * {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 
 
 /* Cards */
@@ -1154,4 +1167,773 @@ footer {
 .map-section,
 #mapSection {
   display: none !important;
+}
+
+
+/* ==========================================
+   SKYSCOPE — FUTURISTIC NAVY THEME
+   UI upgrade layer; preserves existing styles
+   ========================================== */
+
+:root {
+  color-scheme: dark;
+  --sky-bg: #07111f;
+  --sky-panel: rgba(17, 31, 52, 0.78);
+  --sky-panel-solid: #111f34;
+  --sky-border: rgba(148, 190, 255, 0.16);
+  --sky-blue: #65b8ff;
+  --sky-cyan: #72e4f8;
+  --sky-text: #eef5ff;
+  --sky-muted: #a4b5cc;
+  --sky-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(
+      ellipse at 12% 0%,
+      rgba(35, 111, 190, 0.22),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 90% 20%,
+      rgba(31, 174, 210, 0.10),
+      transparent 35%
+    ),
+    var(--sky-bg);
+  color: var(--sky-text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  color: var(--sky-text);
+  letter-spacing: -0.025em;
+}
+
+p, small, label {
+  color: var(--sky-muted);
+}
+
+a {
+  color: var(--sky-blue);
+  transition: color 180ms ease;
+}
+
+a:hover {
+  color: var(--sky-cyan);
+}
+
+nav, header {
+  background: rgba(7, 17, 31, 0.82);
+  border-bottom: 1px solid var(--sky-border);
+  backdrop-filter: blur(18px);
+}
+
+section,
+.weather-card,
+.score-card,
+.insight-card,
+.alert-card,
+.forecast-card,
+.hourly-card,
+.comparison-card,
+.favourite-city-card,
+.chart-card {
+  border-color: var(--sky-border);
+}
+
+.weather-card,
+.score-card,
+.insight-card,
+.alert-card,
+.forecast-card,
+.hourly-card,
+.comparison-card,
+.favourite-city-card,
+.chart-card,
+section {
+  border-radius: 20px;
+}
+
+input,
+select,
+textarea {
+  background: rgba(5, 15, 29, 0.85);
+  color: var(--sky-text);
+  border: 1px solid var(--sky-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8296b0;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid rgba(101, 184, 255, 0.55);
+  outline-offset: 2px;
+  border-color: var(--sky-blue);
+}
+
+button {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+button:hover {
+  box-shadow: 0 8px 24px rgba(49, 143, 255, 0.18);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+img {
+  max-width: 100%;
+}
+
+canvas {
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--sky-cyan);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  section {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    max-width: 100%;
+  }
+}
+
+/* SkyScope UI refinement: improve card contrast */
+
+:root {
+  --sky-bg: #07111f;
+  --sky-panel: #111f34;
+  --sky-border: rgba(148, 190, 255, 0.18);
+  --sky-blue: #65b8ff;
+  --sky-cyan: #72e4f8;
+  --sky-text: #eef5ff;
+  --sky-muted: #b2c2d8;
+}
+
+/* Main dashboard cards */
+.weather-card,
+.score-card,
+.insight-card,
+.alert-card,
+.forecast-card,
+.hourly-card,
+.comparison-card,
+.favourite-city-card,
+.chart-card,
+section {
+  background: rgba(17, 31, 52, 0.88);
+  color: var(--sky-text);
+  border: 1px solid var(--sky-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(14px);
+}
+
+/* Keep headings readable */
+section h1,
+section h2,
+section h3,
+.weather-card h1,
+.weather-card h2,
+.weather-card h3,
+.score-card h3,
+.insight-card h3 {
+  color: var(--sky-text);
+}
+
+/* Body copy */
+section p,
+section small,
+.weather-card p,
+.score-card p,
+.insight-card p,
+.alert-card p,
+.forecast-card p {
+  color: var(--sky-muted);
+}
+
+/* Inner score panel */
+.score-card > div,
+.score-card .score-circle {
+  border-color: var(--sky-blue);
+}
+
+/* Inputs */
+input,
+select,
+textarea {
+  background: #091629;
+  color: var(--sky-text);
+  border-color: var(--sky-border);
+}
+
+/* Avoid oversized gaps on smaller screens */
+@media (max-width: 768px) {
+  section {
+    margin: 12px;
+    padding: 18px;
+  }
+}
+
+/* SkyScope: fix remaining light dashboard panels */
+
+:root {
+  --sky-bg: #07111f;
+  --sky-panel: #111f34;
+  --sky-panel-raised: #172943;
+  --sky-border: rgba(148, 190, 255, 0.18);
+  --sky-text: #eef5ff;
+  --sky-muted: #b2c2d8;
+}
+
+/* Main section panels */
+section,
+#favouritesContainer,
+#hourlyContainer,
+#forecastContainer,
+#alertsContainer,
+#insightsContainer,
+#comparisonResult {
+  background-color: var(--sky-panel) !important;
+  color: var(--sky-text);
+  border: 1px solid var(--sky-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Section headings and descriptions */
+section h2,
+section h3,
+section p,
+section label {
+  color: var(--sky-text);
+}
+
+/* Favourite city cards */
+.favourite-city-card,
+.favourite-card,
+.favorite-card,
+#favouritesContainer > div {
+  background: var(--sky-panel-raised) !important;
+  color: var(--sky-text);
+  border: 1px solid var(--sky-border);
+  border-radius: 16px;
+}
+
+/* Forecast cards retain a lighter raised navy surface */
+.hourly-card,
+.hourly-forecast-card,
+.forecast-card,
+#hourlyContainer > div {
+  background: #1b2c45 !important;
+  color: var(--sky-text);
+  border: 1px solid var(--sky-border);
+}
+
+/* Text inside nested cards */
+.favourite-city-card *,
+.favourite-card *,
+.favorite-card *,
+.hourly-card *,
+.hourly-forecast-card *,
+.forecast-card * {
+  color: var(--sky-text);
+}
+
+/* Muted descriptions */
+.favourite-city-card p,
+.favourite-card p,
+.favorite-card p,
+.hourly-card p,
+.hourly-forecast-card p,
+.forecast-card p {
+  color: var(--sky-muted);
+}
+
+/* Keep buttons distinct */
+button {
+  cursor: pointer;
+}
+
+/* Responsive forecast layout */
+@media (max-width: 768px) {
+  #hourlyContainer {
+    overflow-x: auto;
+  }
+}
+
+/* SkyScope: current weather detail cards */
+
+.weather-details,
+.weather-stats,
+.weather-info-grid,
+.weather-extra-details {
+  background: transparent;
+}
+
+.weather-details > div,
+.weather-stats > div,
+.weather-info-grid > div,
+.weather-extra-details > div,
+.weather-detail,
+.weather-stat,
+.weather-info-card {
+  background: #172943 !important;
+  color: #eef5ff !important;
+  border: 1px solid rgba(148, 190, 255, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.weather-details h3,
+.weather-details p,
+.weather-details span,
+.weather-stats h3,
+.weather-stats p,
+.weather-stats span,
+.weather-info-grid h3,
+.weather-info-grid p,
+.weather-info-grid span,
+.weather-extra-details h3,
+.weather-extra-details p,
+.weather-extra-details span,
+.weather-detail *,
+.weather-stat *,
+.weather-info-card * {
+  color: #eef5ff !important;
+}
+
+.weather-details p,
+.weather-stats p,
+.weather-info-grid p,
+.weather-extra-details p {
+  color: #b2c2d8 !important;
+}
+
+/* Prevent detail cards from becoming too cramped on mobile */
+@media (max-width: 600px) {
+  .weather-details,
+  .weather-stats,
+  .weather-info-grid,
+  .weather-extra-details {
+    gap: 12px;
+  }
+}
+
+/* Fix SkyScope extra weather detail cards */
+
+.weather-card .extra-weather-details {
+  display: grid;
+  gap: 12px;
+  background: transparent;
+}
+
+.weather-card .extra-weather-details .extra-detail {
+  background: #172943 !important;
+  color: #eef5ff !important;
+  border: 1px solid rgba(148, 190, 255, 0.18);
+  border-radius: 16px;
+  padding: 18px 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.weather-card .extra-detail p,
+.weather-card .extra-detail span,
+.weather-card .extra-detail strong {
+  color: #eef5ff !important;
+}
+
+.weather-card .extra-detail p {
+  color: #b2c2d8 !important;
+}
+
+/* Sunrise and sunset cards */
+.weather-card .sun-details {
+  display: grid;
+  gap: 12px;
+  background: transparent;
+}
+
+.weather-card .sun-details > div {
+  background: #172943 !important;
+  color: #eef5ff !important;
+  border: 1px solid rgba(148, 190, 255, 0.18);
+  border-radius: 16px;
+  padding: 18px 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.weather-card .sun-details p,
+.weather-card .sun-details span,
+.weather-card .sun-details strong {
+  color: #eef5ff !important;
+}
+
+.weather-card .sun-details p {
+  color: #b2c2d8 !important;
+}
+
+/* SkyScope — dark Weather Trends charts */
+
+.weather-trends,
+.trends-section,
+.chart-container,
+.temperature-chart-container,
+.humidity-chart-container {
+  color: #eef5ff;
+}
+
+.weather-trends .chart-card,
+.trends-section .chart-card,
+.weather-trends > div,
+.trends-section > div {
+  background: #111f34 !important;
+  color: #eef5ff;
+  border: 1px solid rgba(148, 190, 255, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.weather-trends h2,
+.weather-trends h3,
+.trends-section h2,
+.trends-section h3 {
+  color: #eef5ff !important;
+}
+
+.weather-trends p,
+.trends-section p {
+  color: #b2c2d8 !important;
+}
+
+/* Chart.js canvas should remain transparent */
+.weather-trends canvas,
+.trends-section canvas {
+  background: transparent !important;
+}
+
+@media (max-width: 768px) {
+  .weather-trends > div,
+  .trends-section > div {
+    padding: 16px;
+  }
+}
+
+/* SkyScope: targeted section backgrounds */
+
+.comparison-section,
+.favourites-section,
+.hourly-section,
+.trends-section,
+.forecast-section {
+  background: transparent;
+  color: #eef5ff;
+  border-color: rgba(148, 190, 255, 0.18);
+}
+
+/* Weather content panel */
+.weather-card {
+  background: #111f34;
+  color: #eef5ff;
+  border: 1px solid rgba(148, 190, 255, 0.18);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Main section headings */
+.comparison-section h2,
+.favourites-section h2,
+.hourly-section h2,
+.trends-section h2,
+.forecast-section h2 {
+  color: #eef5ff;
+}
+
+/* Map remains hidden until Google Cloud access is restored */
+.map-card {
+  display: none !important;
+}
+
+/* SkyScope — unified futuristic navbar */
+
+nav,
+.navbar,
+header {
+  background: #0b1729 !important;
+  color: #eef5ff !important;
+  border-bottom: 1px solid rgba(101, 184, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(16px);
+}
+
+nav a,
+.navbar a,
+header a,
+nav .nav-link,
+.navbar .nav-link {
+  color: #c9d9ef !important;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+nav a:hover,
+.navbar a:hover,
+header a:hover,
+nav .nav-link:hover,
+.navbar .nav-link:hover {
+  color: #72e4f8 !important;
+}
+
+nav h1,
+nav h2,
+.navbar h1,
+.navbar h2,
+header h1,
+header h2 {
+  color: #eef5ff !important;
+}
+
+/* SkyScope location button — final color fix */
+button#locationBtn,
+button.location-btn {
+  background: linear-gradient(135deg, #2563eb, #0891b2) !important;
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(114, 228, 248, 0.35) !important;
+  border-radius: 12px !important;
+  padding: 14px 24px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.25);
+}
+
+button#locationBtn:hover,
+button.location-btn:hover {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4) !important;
+  color: #ffffff !important;
+}
+
+/* SkyScope AI Weather Briefing */
+
+.ai-briefing-section {
+  background: transparent !important;
+  color: #eef5ff;
+  margin: 28px auto;
+  width: min(1100px, calc(100% - 32px));
+}
+
+.ai-briefing-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.ai-briefing-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: rgba(37, 99, 235, 0.18);
+  border: 1px solid rgba(101, 184, 255, 0.28);
+  color: #72e4f8;
+  font-size: 26px;
+}
+
+.ai-briefing-heading h2 {
+  color: #eef5ff;
+  margin: 0 0 4px;
+}
+
+.ai-briefing-heading p {
+  color: #b2c2d8;
+  margin: 0;
+}
+
+.ai-briefing-card {
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(101, 184, 255, 0.2);
+  background: linear-gradient(
+    135deg,
+    rgba(17, 31, 52, 0.98),
+    rgba(20, 43, 72, 0.95)
+  );
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
+}
+
+.ai-briefing-status {
+  color: #72e4f8;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.ai-briefing-text {
+  color: #eef5ff;
+  font-size: 16px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.ai-briefing-text:empty {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .ai-briefing-section {
+    width: calc(100% - 24px);
+  }
+
+  .ai-briefing-card {
+    padding: 18px;
+  }
+}
+
+/* =========================================
+   SkyScope layout width fix
+   ========================================= */
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Let the main application use the available width */
+main {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+/* Keep sections centered and responsive */
+main > section,
+main .comparison-section,
+main .favourites-section,
+main .hourly-section,
+main .trends-section,
+main .forecast-section,
+main .ai-briefing-section {
+  width: min(1200px, calc(100% - 48px));
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Prevent cards from being forced into a narrow column */
+.comparison-section,
+.favourites-section,
+.hourly-section,
+.trends-section,
+.forecast-section {
+  min-width: 0;
+}
+
+/* Desktop layout */
+@media (min-width: 900px) {
+  main > section,
+  main .comparison-section,
+  main .favourites-section,
+  main .hourly-section,
+  main .trends-section,
+  main .forecast-section,
+  main .ai-briefing-section {
+    width: min(1200px, calc(100% - 64px));
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+  main > section,
+  main .comparison-section,
+  main .favourites-section,
+  main .hourly-section,
+  main .trends-section,
+  main .forecast-section,
+  main .ai-briefing-section {
+    width: calc(100% - 24px);
+  }
+}
+
+/* Fix narrow SkyScope dashboard sections */
+
+main > .comparison-section,
+main > .favourites-section,
+main > .hourly-section,
+main > .trends-section,
+main > .forecast-section {
+  display: block;
+  width: min(1200px, calc(100% - 48px));
+  max-width: 1200px;
+  margin: 28px auto;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+main > .comparison-section > *,
+main > .favourites-section > *,
+main > .hourly-section > *,
+main > .trends-section > *,
+main > .forecast-section > * {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  main > .comparison-section,
+  main > .favourites-section,
+  main > .hourly-section,
+  main > .trends-section,
+  main > .forecast-section {
+    width: calc(100% - 24px);
+  }
 }

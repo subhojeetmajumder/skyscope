@@ -156,6 +156,7 @@ displayWeatherInsights(data);
 
 displayWeatherScore(data);
 displayWeatherAlerts(data);
+generateAIWeatherBriefing(data.city);
 }
 
 
@@ -1786,3 +1787,40 @@ function removeFavouriteCity(city) {
 
 // LOAD FAVOURITES WHEN THE APP STARTS
 renderFavouriteCities();
+
+async function generateAIWeatherBriefing(city) {
+  const status = document.getElementById("aiBriefingStatus");
+  const output = document.getElementById("aiBriefingText");
+
+  if (!status || !output || !city) return;
+
+  status.textContent = `Preparing your briefing for ${city}…`;
+  output.textContent = "";
+
+  try {
+    const response = await fetch("/api/ai-briefing", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ city })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        result.error || "Unable to generate the briefing."
+      );
+    }
+
+    status.textContent = `AI weather briefing · ${result.city}`;
+    // Use textContent, not innerHTML, for untrusted model output.
+    output.textContent = result.briefing;
+  } catch (error) {
+    status.textContent = "AI briefing temporarily unavailable.";
+    output.textContent =
+      error.message ||
+      "Please try again after checking your connection and API settings.";
+  }
+}
